@@ -19,7 +19,8 @@ from langchain_core.messages import (
 from langchain_groq import ChatGroq
 
 from tools.flight_tool import search_flights
-from tools.tavily_tool import tavily_search
+# from tools.tavily_tool import tavily_search
+from mcp_client_test import tavily_mcp_search
 
 os.environ["SSL_CERT_FILE"] = certifi.where()
 os.environ["REQUESTS_CA_BUNDLE"] = certifi.where()
@@ -72,7 +73,7 @@ def flight_agent(state : TravelState):
 
 def hotel_agent(state: TravelState):
     query = f"Best Hotels for {state["user_query"]}"
-    hotel_results = tavily_search(query)
+    hotel_results = tavily_mcp_search(query)
 
     return{
         "hotel_results" : hotel_results,
