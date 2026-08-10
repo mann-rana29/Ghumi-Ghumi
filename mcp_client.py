@@ -104,7 +104,7 @@ async def initialize_mcp():
     )
 
     tools_by_name = {
-        tool.name : tools for tool in tools
+        tool.name : tool for tool in tools
     }
 
     search_tool = tools_by_name.get(
